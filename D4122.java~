@@ -1,0 +1,7 @@
+public class D4122
+{
+  public static void main(String[] args)
+  {
+    SymbolGraph sg = new SymbolGraph("movie.txt", "/");
+  }
+}

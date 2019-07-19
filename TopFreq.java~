@@ -1,0 +1,18 @@
+import java.util.Arrays;
+
+public class TopFreq
+{
+  public static void main(String [] args)
+  {
+    int k = Integer.parseInt(args[0]);
+    int N = Integer.parseInt(args[1]);
+    In in = new In();
+    String[] a = in.readAllStrings();
+    Arrays.sort(a);
+    for(int i = 0; i < a.length; i++)
+    {
+      if(a[i].length() < 6) continue;
+      
+    }
+  }
+}

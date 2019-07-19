@@ -1,0 +1,109 @@
+import java.util.NoSuchElementException;
+
+public class BSTArr<Key extends Comparable<Key>, key> {
+    private int[] key;             
+    private int[] left;
+    private int[] right;
+    private int MaxSize;
+    private int size;
+    
+    public BSTArr(int max)
+    {
+      MaxSize = max;
+      key = new int[max];
+      left = new int[max];
+      right = new int[max];
+      size = 0;
+    }
+    
+    public void out()
+    {
+      System.out.println("key");
+      for(int i = 0; i < MaxSize; i++)
+      {
+        System.out.print(key[i] + " ");
+      }
+      System.out.println();
+      System.out.println("left");
+      for(int i = 0; i < MaxSize; i++)
+      {
+        System.out.print(left[i] + " ");
+      }
+      System.out.println();
+      System.out.println("right");
+      for(int i = 0; i < MaxSize; i++)
+      {
+        System.out.print(right[i] + " ");
+      }
+      System.out.println();
+    }
+    public int get(int Key) {
+        return get(0, Key);
+    }
+
+    private int get(int x, int Key) {
+        if(Key < key[x])
+        {
+          if(left[x] == 0)
+          {
+            return 0;
+          }
+          else return get(left[x], Key);
+        }
+        else if(Key > key[x]) 
+        {
+          if(right[x] == 0)
+          {
+            return 0;
+          }
+          else return get(right[x], Key);
+        }
+        else return x;
+    }
+
+    public void put(int key) 
+    {
+      if(size >= MaxSize) return;
+      else put(0, key);
+    }
+
+    private int put(int x, int Key) {
+        if(Key < key[x])
+        {
+          if(left[x] == 0)
+          {
+            left[x]  = size;
+            key[size] = Key;
+            size++;
+          }
+          else left[x]  = put(left[x],  Key);
+        }
+        else if(Key > key[x]) 
+        {
+          if(right[x] == 0)
+          {
+            right[x]  = size;
+            key[size] = Key;
+            size++;
+          }
+          else right[x] = put(right[x], Key);
+        }
+        else key[x] = Key;
+        return x;
+    }
+    
+    public static void main(String[] args)
+    {
+      int N = Integer.parseInt(args[0]);
+      BSTArr bst = new BSTArr(N);
+      Stopwatch s = new Stopwatch();
+      for(int i = 0; i < N; i++)
+      {
+        int x = (int)(Math.random()*N + 1 + 1);
+        bst.put(x);
+      }
+      bst.out();
+      double elap = s.elapsedTime();
+      System.out.println("innsetning á " + N + "stökum tekur " + elap + "sek");
+    }
+}

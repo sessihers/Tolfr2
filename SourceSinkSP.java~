@@ -1,0 +1,11 @@
+public class SourceSinkSP
+{
+  private EdgeWeightedDigraph G;
+  
+  public SourceSinkSP(EdgeWeightedDigraph G)
+  {
+    this.G = new EdgeWeightedDigraph(G);
+  }
+  
+  
+}

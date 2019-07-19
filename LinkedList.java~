@@ -1,0 +1,23 @@
+import java.util.*;
+
+public class LinkedList
+{
+  Node first  = new Node(1);
+  Node second = new Node(2);
+  Node third  = new Node(3);
+  System.out.println(first.item());
+  first.next = second;
+  second.next = third;
+
+
+
+  private class Node
+  {
+    int item;
+    Node next; 
+    Node(int n)
+    {
+      item = n;
+    }
+  }
+}

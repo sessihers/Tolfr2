@@ -1,0 +1,11 @@
+public class ErdosRenyi
+{
+  public static void count(int N)
+  {
+    
+  }
+  
+  public static void main(String[] args)
+  {
+  }
+}

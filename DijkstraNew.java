@@ -1,0 +1,48 @@
+import java.util.Arrays;
+
+public class DijkstraNew {
+  
+    private double[] distTo;          
+    private DirectedEdge[] edgeTo;    
+    private IndexMinPQ<Double> pq;    
+
+    public DijkstraNew(ewdNew G, int s) {
+
+
+
+        distTo = new double[G.V()];
+        edgeTo = new DirectedEdge[G.V()];
+
+
+
+        for (int v = 0; v < G.V(); v++)
+            distTo[v] = Double.POSITIVE_INFINITY;
+        distTo[s] = 0.0;
+
+        // relax vertices in order of distance from s
+        pq = new IndexMinPQ<Double>(G.V());
+        pq.insert(s, distTo[s]);
+        while (!pq.isEmpty()) {
+            int v = pq.delMin();
+            for (DirectedEdge e : G.adj(v))
+                relax(e);
+        }
+
+
+    }
+    
+    private void relax(DirectedEdge e) {
+        int v = e.from(), w = e.to();
+        if (distTo[w] > distTo[v] + e.weight()) {
+            distTo[w] = distTo[v] + e.weight();
+            edgeTo[w] = e;
+            if (pq.contains(w)) pq.decreaseKey(w, distTo[w]);
+            else                pq.insert(w, distTo[w]);
+        }
+    }
+
+    public double distTo(int v) {
+        return distTo[v];
+    }
+
+}

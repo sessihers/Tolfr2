@@ -1,0 +1,44 @@
+public class immortal
+{
+  public final long mod = 1000000000;
+  
+  public void modarr(long[2][2] a)
+  {
+    a[0][0] %= mod;
+    a[0][1] %= mod;
+    a[1][0] %= mod;
+    a[1][1] %= mod;
+  }
+  
+  public long[2][2] margf(long[2][2] a)
+  {
+    long[][] b = new long[2][2];
+    b[0][0] = ((a[0][0]*a[0][0])%mod + (a[0][1]*a[1][0])%mod)%mod;
+    b[0][1] = ((a[0][0]*a[0][1])%mod + (a[0][1]*a[1][1])%mod)%mod;
+    b[1][0] = ((a[1][0]*a[0][0])%mod + (a[1][1]*a[1][0])%mod)%mod;
+    b[1][1] = ((a[1][0]*a[0][1])%mod + (a[1][1]*a[1][1])%mod)%mod;
+    return b;
+  }
+  
+  public static void main(String[] args)
+  {
+    long[][] a = new long[2][2];
+    a[0][0] = 1;
+    a[0][1] = 1;
+    a[1][0] = 1;
+    a[1][1] = 0;
+    for(int i = 0; i < 100; i++)
+    {
+      a = margf(a);
+      for(int j = 0; j < 2; j++)
+      {
+        for(int k = 0; k < 2; k++)
+        {
+          System.out.print(a[j][k] + " ");
+        }
+        System.out.println();
+      }
+      System.out.println();
+    }
+  }
+}

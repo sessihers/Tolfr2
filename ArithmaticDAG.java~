@@ -1,0 +1,16 @@
+public class ArithmaticDAG
+{
+  private Digraph G;
+  
+  public ArithmaticDAG(Digraph G)
+  {
+    this.G = G;
+    DirectedCycle dc = new DirectedCycle(G);
+    if (dc.hasCycle()) throw new IllegalArgumentException("Digraph must be a DAG");
+  }
+  
+  public double value()
+  {
+    
+  }
+}

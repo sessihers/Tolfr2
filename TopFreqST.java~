@@ -1,0 +1,10 @@
+public class TopFreqST
+{
+  public static void main(String[] args)
+  {
+    int k = Integer.parseInt(args[0]);
+    int N = Integer.parseInt(args[1]);
+    Stopwatch s = new Stopwatch();
+    In in = new In();
+  }
+}
